@@ -1,5 +1,7 @@
 # example_consumer.py
-import pika, os, time
+import pika
+import os
+import time
 
 
 def pdf_process_function(msg):
@@ -7,8 +9,8 @@ def pdf_process_function(msg):
     print(" [x] Received " + str(msg))
 
     time.sleep(5)  # delays for 5 seconds
-    print(" PDF processing finished");
-    return;
+    print(" PDF processing finished")
+    return
 
 
 # Access the CLODUAMQP_URL environment variable and parse it (fallback to localhost)
