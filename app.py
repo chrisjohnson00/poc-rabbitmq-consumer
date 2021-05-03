@@ -5,11 +5,11 @@ import time
 
 
 def pdf_process_function(msg):
-    print(" PDF processing")
-    print(" [x] Received " + str(msg))
+    print(" PDF processing", flush=True)
+    print(" [x] Received " + str(msg), flush=True)
 
     time.sleep(5)  # delays for 5 seconds
-    print(" PDF processing finished")
+    print(" PDF processing finished", flush=True)
     return
 
 
