@@ -28,5 +28,5 @@ jobs:
           password: '${{ secrets.DOCKER_HUB_PASSWORD }}'
       - name: 'build container'
         run: |
-          docker build . -t chrisjohnson00/poc-rabbitmq-consumer:${{ steps.calculated-next-version.outputs.new_tag }}
+          docker build . -f Dockerfile_windows -t chrisjohnson00/poc-rabbitmq-consumer:${{ steps.calculated-next-version.outputs.new_tag }}
           docker push chrisjohnson00/poc-rabbitmq-consumer:${{ steps.calculated-next-version.outputs.new_tag }}
