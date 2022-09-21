@@ -1,36 +1,15 @@
 # example_consumer.py
 import pika
 import os
-import time
 
-
-def pdf_process_function(msg):
-    print(" PDF processing", flush=True)
-    print(" [x] Received " + str(msg), flush=True)
-
-    time.sleep(5)  # delays for 5 seconds
-    print(" PDF processing finished", flush=True)
-    return
-
-
-# Access the AMQP_URL environment variable and parse it (fallback to localhost)
-url = os.environ.get('AMQP_URL', 'amqp://guest:guest@localhost:5672/%2f')
+# Access the AMQP_URL environment variable and parse it
+url = os.environ.get('AMQP_URL')
+print(url)
 params = pika.URLParameters(url)
+print(params)
 connection = pika.BlockingConnection(params)
+print(connection)
 channel = connection.channel()  # start a channel
-channel.queue_declare(queue='pdfprocess')  # Declare a queue
-
-
-# create a function which is called on incoming messages
-def callback(ch, method, properties, body):
-    pdf_process_function(body)
-
-
-# set up subscription on the queue
-channel.basic_consume('pdfprocess',
-                      callback,
-                      auto_ack=True)
-
-# start consuming (blocks)
-channel.start_consuming()
-connection.close()
+channel.queue_declare(queue='chris_test')  # Declare a queue
+print(channel)
+print("Done")
